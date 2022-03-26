@@ -22,7 +22,6 @@ body {
     padding: 0;
     margin: 0;
 }
-
 body.correct {
     background-color: var(--correct);
 }
@@ -46,3 +45,39 @@ body.incorrect {
     gap:12px;
     margin: 20px 0;
 }
+
+.btn {
+    background-color: var(--tertiary);
+    border:2px solid var(--secondary);
+    border-radius: 8px;
+    padding: 6px;
+}
+
+.btn:hover {
+    border-color: rgb(250, 115, 239);
+}
+
+.btn.correct {
+    background-color: var(--correct);
+}
+
+.btn.incorrect {
+    background-color: var(--incorrect);
+}
+
+.direct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-btn, .next-btn {
+    font-size: 30px;
+    font-weight: bold;
+    padding: 15px 20px;
+}
+
+.content {
+    display: none;
+}
+    
