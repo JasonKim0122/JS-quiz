@@ -10,8 +10,9 @@
 }
 
 .container {
-    height: 100px;
+    height: 90px;
     width:500px;
+    background-color: rgb(199, 188, 173);
 }
 
 .score-form {
@@ -19,6 +20,7 @@
     justify-content: space-around;
     align-items: center;
     width:100%;
+    height:100%;
     font-size: 30px;
     color: var(--secondary);
     background-color: var(--tertiary);
@@ -26,6 +28,7 @@
 }
 
 .form-btn {
-    height: 20px;
+    border: 1px solid var(--primary);
+    height: 30px;
     width: 80px;
 }

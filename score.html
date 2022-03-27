@@ -11,17 +11,20 @@
 <body>
     <section>
     <div class="scores">
-        <h1>High Scores</h1>
+        <h1 id="score-title">High Scores</h1>
     </div>
     <div class="container">
-    <form class="score-form">
-        <label for="name">Enter full name: </label>
+    <form class="score-form content">
+        <label class="form-input" for="name">Enter full name: </label>
         <input type="text" placeholder="Your Name" name="name" id="name" class="form-input">
-        <button class="form-btn" type="submit">Submit</button>
+        <button onclick="save()" class="form-btn" id="save-btn" type="button">Save</button>
+        <button class="form-btn" id="view-btn" type="button">View</button>
+        <button id="start-btn" class="start-btn btn content">Start</button>
     </form>
+    
     </div>
 
     </section>
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/score.js"></script>
 </body>
 </html>

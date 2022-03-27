@@ -12,7 +12,7 @@ const timerBody = document.getElementById("time")
 let mixedQuestions, currentQuestionIndex
 
 //Countdown timer start
-let countDownTime = 5;
+let countDownTime = 20;
 timerEl.innerHTML = countDownTime
 
 const timerId = setInterval(startTimer, 1000);
@@ -110,6 +110,7 @@ function endGame () {
     }
     
 }
+
 //Array
 
 const questions = [
