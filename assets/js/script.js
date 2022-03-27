@@ -3,16 +3,17 @@ const nextButtonEl = document.getElementById("next-btn")
 const questionContainerEl= document.getElementById("question-body")
 const questionEl =document.getElementById("question")
 const answerButtonEl=document.getElementById("answer-buttons")
+const timerEl = document.getElementById("timer-count")
+const timerBody = document.getElementById("time")
 
 
 let mixedQuestions, currentQuestionIndex
 
 //Countdown timer start
-let countDownTime = 5
-const timerEl = document.getElementById("timer-count") 
-timerEl.innerHTML = countDownTime 
+let countDownTime = 5;
+timerEl.innerHTML = countDownTime
 
-function countDown() {
+function countDown() { 
     if (countDownTime <= 0) {
         timerEl.innerHTML = "You have ran out of time!"
         endGame(); 
@@ -23,7 +24,7 @@ function countDown() {
     }
 }
 
-
+//Countdown timer end
 
 //Functions
 function startGame() {
@@ -70,8 +71,7 @@ function chosenAnswer (event) {
         nextButtonEl.classList.remove("content")
     }
     else {
-        startButtonEl.innerText = "Start Over"
-        startButtonEl.classList.remove("content")
+        endGame();
     }
 }
 
@@ -90,6 +90,19 @@ function clearStatusOfClass(element) {
     element.classList.remove("incorrect")
 }
 
+function endGame () {
+    if (countDownTime > 0) {
+        questionContainerEl.classList.add("content");
+        timerEl.classList.add("content");
+        timerBody.innerText= "Congratulations! Lets see how you did!"
+    }
+    else {
+        questionContainerEl.classList.add("content");
+        timerEl.classList.add("content");
+        timerBody.innerText= "You are out of time!"
+    }
+    
+}
 //Array
 
 const questions = [
