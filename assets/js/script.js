@@ -4,7 +4,26 @@ const questionContainerEl= document.getElementById("question-body")
 const questionEl =document.getElementById("question")
 const answerButtonEl=document.getElementById("answer-buttons")
 
+
 let mixedQuestions, currentQuestionIndex
+
+//Countdown timer start
+let countDownTime = 5
+const timerEl = document.getElementById("timer-count") 
+timerEl.innerHTML = countDownTime 
+
+function countDown() {
+    if (countDownTime <= 0) {
+        timerEl.innerHTML = "You have ran out of time!"
+        endGame(); 
+    }
+    else {
+        timerEl.innerHTML = countDownTime + " seconds left"
+        countDownTime--; 
+    }
+}
+
+
 
 //Functions
 function startGame() {
@@ -112,7 +131,10 @@ const questions = [
     }
 ]
 //Event Listener
-startButtonEl.addEventListener("click", startGame)
+startButtonEl.addEventListener("click", function () {
+    startGame();
+    setInterval(countDown,1000);
+}) 
 nextButtonEl.addEventListener("click", function () {
     currentQuestionIndex++
     nextQuestion();

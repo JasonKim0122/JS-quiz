@@ -23,9 +23,26 @@ body {
     margin: 0;
 }
 
-.container {
+.timer {
+    display:flex;
+    align-items: center;
+}
+
+.timer h1 {
+font-size: 30px;
+font-weight: bold;  
+}
+
+#timer-count {
+    background-color: darkslategray;
+    font-size: 20px;
+    padding: 20px 0 15px 10px;
+    color: var(--tertiary);
+}
+
+.container{
     width: 400px;
-    max-width: 80%;
+    max-width: 100%;
     background-color: #ffffff;
     border-radius: 5px;
     padding: 15px;
