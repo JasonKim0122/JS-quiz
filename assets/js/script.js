@@ -3,18 +3,33 @@ const questionContainerEl= document.getElementById("question-body")
 const questionEl =document.getElementById("question")
 const answerButtonEl=document.getElementById("answer-buttons")
 
+let mixedQuestions, currentQuestionIndex
+
 //Functions
 function startGame() {
     startButtonEl.classList.add("content")
+    mixedQuestions = questions.sort(() => Math.random() - .5)
+    currentQuestionIndex = 0
     questionContainerEl.classList.remove("content")
     nextQuestion();
 }
 
 function nextQuestion () {
-
+    newQuestion(mixedQuestions[currentQuestionIndex])
 }
-function newQuestion(question) {
+
+function newQuestion(questions) {
     questionEl.innerText = questions.question
+    questions.answers.forEach(answers => {
+        const buttonEl = document.createElement("button")
+        buttonEl.innerText = answers.text
+        buttonEl.classList.add("btn")
+        if (answers.correct) {
+            buttonEl.dataset.correct = answers.correct 
+        }
+        buttonEl.addEventListener("click", selectAnswer)
+        answerButtonEl.appendChild(buttonEl)
+    })
 }
 var selectAnswer = function () {
     
