@@ -1,6 +1,7 @@
 const bodyEl = document.querySelector(".container")
 const startButtonEl = document.getElementById("start-btn")
 const nextButtonEl = document.getElementById("next-btn")
+const scoreButtonEl = document.getElementById("score-btn")
 const questionContainerEl= document.getElementById("question-body")
 const questionEl =document.getElementById("question")
 const answerButtonEl=document.getElementById("answer-buttons")
@@ -11,7 +12,7 @@ const timerBody = document.getElementById("time")
 let mixedQuestions, currentQuestionIndex
 
 //Countdown timer start
-let countDownTime = 10;
+let countDownTime = 5;
 timerEl.innerHTML = countDownTime
 
 const timerId = setInterval(startTimer, 1000);
@@ -96,14 +97,16 @@ function clearStatusOfClass(element) {
 function endGame () {
     if (countDownTime > 0) {
         clearInterval(timerId)
-        bodyEl.classList.add("content")
+        questionContainerEl.classList.add("content")
         timerEl.classList.add("content")
-        timerBody.innerText= "Congratulations! Lets see how you did!"
+        timerBody.innerText= "Lets see how you did!"
+        scoreButtonEl.classList.remove("content")
     } 
     else {
-        bodyEl.classList.add("content")
+        startButtonEl.classList.add("content")
         timerEl.classList.add("content")
         timerBody.innerHTML= "You are out of time!"
+        scoreButtonEl.classList.remove("content")
     }
     
 }

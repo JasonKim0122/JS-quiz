@@ -25,6 +25,7 @@ body {
 
 .timer {
     display:flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -81,7 +82,7 @@ font-weight: bold;
     align-items: center;
 }
 
-.start-btn, .next-btn {
+.start-btn, .next-btn, .score-btn {
     font-size: 30px;
     font-weight: bold;
     padding: 15px 20px;
@@ -91,7 +92,6 @@ font-weight: bold;
     display: none;
 }
 
-.endGame {
-    
+.score-btn {
+    text-decoration: none;
 }
-    

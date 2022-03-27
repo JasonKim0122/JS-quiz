@@ -1,0 +1,31 @@
+.scores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+}
+
+.scores h1 {
+    font-size: 40px;
+}
+
+.container {
+    height: 100px;
+    width:500px;
+}
+
+.score-form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width:100%;
+    font-size: 30px;
+    color: var(--secondary);
+    background-color: var(--tertiary);
+    border: 2px solid var(--primary);
+}
+
+.form-btn {
+    height: 20px;
+    width: 80px;
+}
