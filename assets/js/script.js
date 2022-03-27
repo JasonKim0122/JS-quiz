@@ -1,3 +1,4 @@
+const bodyEl = document.querySelector(".container")
 const startButtonEl = document.getElementById("start-btn")
 const nextButtonEl = document.getElementById("next-btn")
 const questionContainerEl= document.getElementById("question-body")
@@ -10,16 +11,17 @@ const timerBody = document.getElementById("time")
 let mixedQuestions, currentQuestionIndex
 
 //Countdown timer start
-let countDownTime = 5;
+let countDownTime = 10;
 timerEl.innerHTML = countDownTime
 
-function countDown() { 
+const timerId = setInterval(startTimer, 1000);
+
+function startTimer () {
     if (countDownTime <= 0) {
-        timerEl.innerHTML = "You have ran out of time!"
         endGame(); 
-    }
+    } 
     else {
-        timerEl.innerHTML = countDownTime + " seconds left"
+        timerEl.innerHTML = countDownTime + " seconds remaining"
         countDownTime--; 
     }
 }
@@ -33,6 +35,7 @@ function startGame() {
     currentQuestionIndex = 0
     questionContainerEl.classList.remove("content")
     nextQuestion();
+    startTimer();
 }
 
 function nextQuestion () {
@@ -92,14 +95,15 @@ function clearStatusOfClass(element) {
 
 function endGame () {
     if (countDownTime > 0) {
-        questionContainerEl.classList.add("content");
-        timerEl.classList.add("content");
+        clearInterval(timerId)
+        bodyEl.classList.add("content")
+        timerEl.classList.add("content")
         timerBody.innerText= "Congratulations! Lets see how you did!"
-    }
+    } 
     else {
-        questionContainerEl.classList.add("content");
-        timerEl.classList.add("content");
-        timerBody.innerText= "You are out of time!"
+        bodyEl.classList.add("content")
+        timerEl.classList.add("content")
+        timerBody.innerHTML= "You are out of time!"
     }
     
 }
@@ -146,8 +150,8 @@ const questions = [
 //Event Listener
 startButtonEl.addEventListener("click", function () {
     startGame();
-    setInterval(countDown,1000);
-}) 
+})
+
 nextButtonEl.addEventListener("click", function () {
     currentQuestionIndex++
     nextQuestion();
