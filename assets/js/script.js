@@ -1,4 +1,5 @@
 const startButtonEl = document.getElementById("start-btn")
+const nextButtonEl = document.getElementById("next-btn")
 const questionContainerEl= document.getElementById("question-body")
 const questionEl =document.getElementById("question")
 const answerButtonEl=document.getElementById("answer-buttons")
@@ -15,6 +16,7 @@ function startGame() {
 }
 
 function nextQuestion () {
+    resetGame();
     newQuestion(mixedQuestions[currentQuestionIndex])
 }
 
@@ -27,12 +29,46 @@ function newQuestion(questions) {
         if (answers.correct) {
             buttonEl.dataset.correct = answers.correct 
         }
-        buttonEl.addEventListener("click", selectAnswer)
+        buttonEl.addEventListener("click", chosenAnswer)
         answerButtonEl.appendChild(buttonEl)
     })
 }
-var selectAnswer = function () {
-    
+
+function resetGame () {
+    nextButtonEl.classList.add("content")
+    while (answerButtonEl.firstChild) {
+        answerButtonEl.removeChild(answerButtonEl.firstChild)
+    }
+}
+function chosenAnswer (event) {
+    const targetButton = event.target
+    const correct = targetButton.dataset.correct
+    statusOfClass(document.body,correct)
+    Array.from(answerButtonEl.children).forEach(button => {
+        statusOfClass(button, button.dataset.correct)
+    })
+    if (mixedQuestions.length > currentQuestionIndex + 1) {
+        nextButtonEl.classList.remove("content")
+    }
+    else {
+        startButtonEl.innerText = "Start Over"
+        startButtonEl.classList.remove("content")
+    }
+}
+
+function statusOfClass (element,correct) {
+    clearStatusOfClass (element)
+    if (correct) {
+        element.classList.add("correct")
+    }
+    else {
+        element.classList.add("incorrect")
+    }
+}
+
+function clearStatusOfClass(element) {
+    element.classList.remove("correct")
+    element.classList.remove("incorrect")
 }
 
 //Array
@@ -77,3 +113,7 @@ const questions = [
 ]
 //Event Listener
 startButtonEl.addEventListener("click", startGame)
+nextButtonEl.addEventListener("click", function () {
+    currentQuestionIndex++
+    nextQuestion();
+})
